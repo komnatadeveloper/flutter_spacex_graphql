@@ -38,6 +38,11 @@ class LaunchProvider with ChangeNotifier {
     required bool isPullToRefresh 
 
   }) async {
+    if (  searchText.length < 4 ) {
+      launchList = [];
+      notifyListeners();
+      return;
+    }
     if ( isPullToRefresh == false && launchPaginationPage != 0 ) {
       launchPaginationPage = 0;
     } 
