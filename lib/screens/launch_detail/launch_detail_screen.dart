@@ -17,13 +17,13 @@ class LaunchDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text( 
-                    'Mission Details',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
+        title: const Text( 
+          'Mission Details',
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold
+          ),
+        ),
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -32,22 +32,22 @@ class LaunchDetailScreen extends StatelessWidget {
             color: Colors.grey[200],
             height: double.infinity,
             width: double.infinity,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   // SizedBox(height: 40,),
                   Text( 
                     launchModel.mission_name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold
                     ),
                   ),
-                  SizedBox(height: 16,),
+                  const SizedBox(height: 16,),
                   Text(
                     launchModel.details ??'NO INFORMATION!',
-                    style: TextStyle(
+                    style: const  TextStyle(
                       height: 1.5,
                       fontSize: 16
                     ),
