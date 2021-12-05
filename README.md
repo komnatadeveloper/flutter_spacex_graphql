@@ -1,4 +1,4 @@
-# A Flutter Repo Using SpaceX API
+# Using SpaceX API via BLOC PATTERN
 
 
 - Infinite Scroll using  [pull_to_refresh](https://pub.dev/packages/pull_to_refresh) package
