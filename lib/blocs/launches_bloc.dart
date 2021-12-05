@@ -1,5 +1,6 @@
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter_spacex_graphql/utils/next_screen.dart';
 
 
 
@@ -28,6 +29,7 @@ class LaunchesBloc extends Bloc<launchEvents.LaunchesEvent, LaunchesState> {
       : super(const LaunchesState.initial()) {
     on<launchEvents.LaunchesSearchTextChanged>(_handleSearchTextChange);
     on<launchEvents.SmartRefreshPulled>(_handlePullSmartRefresh);
+    on<launchEvents.MissionItemClicked>(_handleMissionItemClicked);
   } 
 
   
@@ -128,6 +130,17 @@ class LaunchesBloc extends Bloc<launchEvents.LaunchesEvent, LaunchesState> {
       );
     }
   }  // End of _handleSearchTextChange
+
+
+  void _handleMissionItemClicked (
+    launchEvents.MissionItemClicked event  ,
+    Emitter<LaunchesState> emit,
+  ) {
+    navigateToLaunchDetailsScreen(
+      event.context,
+      event.launchModel
+    );
+  }
 
 
   

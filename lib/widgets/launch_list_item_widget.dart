@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+
+
+// Blocs
+import '../../blocs/launches_bloc.dart';
+import '../../blocs/launches_events.dart' as launchEvents;
 
 // Models
 import '../models/launch_model.dart';
@@ -15,6 +22,9 @@ class LaunchListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _launchesBloc = context.read <LaunchesBloc>();
+
+
     return GestureDetector(
       onTap: () { FocusScope.of(context).requestFocus( FocusNode() ); },
       child: Container(
@@ -25,15 +35,13 @@ class LaunchListItemWidget extends StatelessWidget {
             primary: Colors.grey,
             padding:const EdgeInsets.all(12)
           ),
-          onPressed: () {
-            FocusScope.of(context).requestFocus( FocusNode() );
-            Navigator.of(context).push(
-              CupertinoPageRoute(
-                    builder: (ctx) => LaunchDetailScreen(
-                      launchModel: launchModel,
-                    )
-                  )
-            );            
+          onPressed: () { 
+            _launchesBloc.add(
+                launchEvents.MissionItemClicked(
+                context: context,
+                launchModel: launchModel
+              ) 
+            );         
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
